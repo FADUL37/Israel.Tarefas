@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela</title>
+  <style>
+    /* Definir cores personalizadas */
+    :root {
+      --cor-primaria: #4CAF50;
+      --cor-secundaria: #FFFFFF;
+    }
+
+    /* Estilo da tabela */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+    }
+
+    th,
+    td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: var(--cor-primaria);
+      color: var(--cor-secundaria);
+    }
+
+    body {
+      background-color: #BDFCBF;
+    }
+
+    body {
+      background-image: url('https://raw.githubusercontent.com/FADUL37/Israel.Tarefas/main/web6.jpg');
+      background-repeat: repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      opacity: 0.9;
+      filter: saturate(70%);
+    }
+
+    tr:nth-child(even) {
+      background-color: var(--cor-secundaria);
+    }
+
+    tr:hover {
+      background-color: #F5F5F5;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input[type="datetime-local"] {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    #gerarTabela {
+      background-color: var(--cor-primaria);
+      color: var(--cor-secundaria);
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    var dadosSalvos = [];
+
+    function salvarDados() {
+      var dados = {};
+      dados.CREDOR = document.getElementById("CREDOR").value;
+      dados.COD_IMPORT = document.getElementById("COD_IMPORT").value;
+      dados.FEITO = document.getElementById("FEITO").value;
+      dados.AUSENTE = document.getElementById("AUSENTE").value;
+      dados["LAYOUT 10"] = document.getElementById("LAYOUT 10").value;
+      dados["LAYOUT 16"] = document.getElementById("LAYOUT 16").value;
+      dados["LAYOUT 30"] = document.getElementById("LAYOUT 30").value;
+      dados.FINALIZADA_IMPORT = document.getElementById("FINALIZADA_IMPORT").value;
+      dados.REJEIÇÃO = document.getElementById("REJEIÇÃO").value;
+      dados.FILTROS = document.getElementById("FILTROS").value;
+      dados.REEX = document.getElementById("REXX").value;
+      dados.RECEBA+ = document.getElementById("RECEBA+").value;
+      dados["Data e Hora"] = document.getElementById("dataHora").value;
+
+      // Salva os dados no array
+      dadosSalvos.push(dados);
+
+      // Atualiza a tabela
+      atualizarTabela();
+    }
+
+    function atualizarTabela() {
+      var tabela = document.getElementById("tabelaDados");
+      var tbody = tabela.getElementsByTagName("tbody")[0];
+      tbody.innerHTML = "";
+
+      for (var i = 0; i < dadosSalvos.length; i++) {
+        var tr = document.createElement("tr");
+
+        for (var prop in dadosSalvos[i]) {
+          var td = document.createElement("td");
+          td.textContent = dadosSalvos[i][prop];
+          tr.appendChild(td);
+        }
+
+                tbody.appendChild(tr);
+      }
+    }
+
+    function gerarTabela() {
+      // Adicione aqui a lógica para gerar a tabela conforme o cadastro das tarefas
+      alert("Tabela gerada com sucesso!");
+    }
+  </script>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>CREDOR <input type="text" id="CREDOR"></th>
+        <th>COD_IMPORT <input type="text" id="COD_IMPORT"></th>
+        <th>FEITO <input type="text" id="FEITO"></th>
+        <th>AUSENTE <input type="text" id="AUSENTE"></th>
+        <th>LAYOUT 10 <input type="text" id="LAYOUT 10"></th>
+        <th>LAYOUT 16 <input type="text" id="LAYOUT 16"></th>
+        <th>LAYOUT 30 <input type="text" id="LAYOUT 30"></th>
+        <th>FINALIZADA_IMPORT <input type="text" id="FINALIZADA_IMPORT"></th>
+        <th>REJEIÇÃO <input type="text" id="REJEIÇÃO"></th>
+        <th>FILTROS <input type="text" id="FILTROS"></th>
+        <th>REXX<input type="text" id="REXX"></th>
+        <th>RECEBA+ <input type="text" id="RECEBA+"></th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="8"><button onclick="salvarDados()">Salvar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <table>
+    <thead>
+      <tr>
+        <th>Data e Hora <input type="datetime-local" id="dataHora"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><button onclick="salvarDados()">Salvar</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <table id="tabelaDados">
+    <thead>
+      <tr>
+        <th>CREDOR</th>
+        <th>COD_IMPORT</th>
+        <th>FEITO</th>
+        <th>AUSENTE</th>
+        <th>LAYOUT 10</th>
+        <th>LAYOUT 16</th>
+        <th>LAYOUT 30</th>
+        <th>FINALIZADA_IMPORT</th>
+        <th>REJEIÇÃO</th>
+        <th>FILTROS</th>
+        <th>REXX</th>
+        <th>RECEBA+</th>
+        <th>Data e Hora</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <button id="gerarTabela" onclick="gerarTabela()">Gerar Tabela</button>
+</body>
+</html>
+
