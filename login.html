@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #BDFCBF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    form {
+      background-color: #FFF;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #FFF;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function checkCredentials() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const validUsernames = ["Analistas", "Israel", "Felipe", "Josi", "Patrick", "Luis"];
+      const validPassword = "1234";
+
+      if (validUsernames.includes(username) && password === validPassword) {
+        window.location.href = "tabela.html";
+      } else {
+        alert("Senha incorreta. Entre em contato com o suporte.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <form onsubmit="event.preventDefault(); checkCredentials();">
+    <input type="text" id="username" placeholder="Usuário" required>
+    <input type="password" id="password" placeholder="Senha" required>
+    <button type="submit">Entrar</button>
+  </form>
+</body>
+</html>
